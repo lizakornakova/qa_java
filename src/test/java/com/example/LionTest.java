@@ -15,6 +15,9 @@ public class LionTest {
     @Mock
     Feline feline;
 
+    final String TEXT_OF_EXCEPTION = "Используйте допустимые значения пола животного - самей или самка";
+    final String LION_SEX = "Неизвестный гендер";
+
     @Test
     //Проверяем, что getFood() возвращает верный список
     public void getFoodTestForLion() throws Exception{
@@ -31,5 +34,16 @@ public class LionTest {
         Mockito.when(feline.getKittens()).thenReturn(1);
         int expectedNumber = 1;
         Assert.assertEquals(expectedNumber, lion.getKittens());
+    }
+
+    @Test
+    // Проверяем, что при передаче в конструктор Lion некорректного названия пола возникает исключение
+    public void lionConstructorExceptionTest() {
+        try {
+            Lion lion = new Lion(LION_SEX, feline);
+            Assert.fail("Исключение не отработало");
+        } catch (Exception thrown) {
+            Assert.assertEquals(TEXT_OF_EXCEPTION, thrown.getMessage());
+        }
     }
 }
