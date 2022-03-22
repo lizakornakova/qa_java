@@ -27,9 +27,9 @@ public class CatTest {
     // Проверяем, что getFood() возвращает нужное значение
     public void getFoodTestForCat() throws Exception {
         Cat catTest = new Cat(felineTest);
-        Mockito.when(felineTest.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-        List<String> actual = catTest.getFood();
         List<String> expected = List.of("Животные", "Птицы", "Рыба");
+        Mockito.when(felineTest.eatMeat()).thenReturn(expected);
+        List<String> actual = catTest.getFood();
         Assert.assertEquals(actual, expected);
     }
 }
