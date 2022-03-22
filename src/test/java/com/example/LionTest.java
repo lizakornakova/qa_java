@@ -22,8 +22,8 @@ public class LionTest {
     //Проверяем, что getFood() возвращает верный список
     public void getFoodTestForLion() throws Exception{
         Lion lion = new Lion ("Самец", feline);
-        Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
+        Mockito.when(feline.getFood("Хищник")).thenReturn(expectedFood);
         Assert.assertEquals(expectedFood, lion.getFood());
     }
 
